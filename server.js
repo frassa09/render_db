@@ -32,6 +32,21 @@ server.get('/criartabelausuario', async (request, reply) =>  {
     }
 })
 
+server.post('/adicionarusuario', async(request, reply) => {
+
+    const {nome, senha, email} = request.body
+
+    try{
+
+        const resposta = await pool.query('INSERT INTO USUARIO (NOME, SENHA, EMAIL) VALUES ($1, $2, $3) RETURNING *', [nome, senha, email])
+
+        reply.status(200).send(resposta.rows[0])
+    }
+    catch(e){
+        reply.status(500).send(`erro ao cadastrar usuário: ${e}`)
+    }
+})
+
 
 server.get('/teste', (request, reply) => {
 
