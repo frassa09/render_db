@@ -13,7 +13,7 @@ const pool = new Pool({
     }
 })
 
-server.get('/criartabelausuario', async (request, reply) => {
+server.get('/criartabelausuario', async (request, reply) =>  {
 
 
     try{
@@ -30,6 +30,12 @@ server.get('/criartabelausuario', async (request, reply) => {
     catch(e){
         reply.status(500).send(`Erro ao criar tabela usuários: ${e}`)
     }
+})
+
+
+server.get('/teste', (request, reply) => {
+
+    reply.send('servidor no ar funcionando normalmente')
 })
 
 
