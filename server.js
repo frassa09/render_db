@@ -43,7 +43,8 @@ server.get('/teste', (request, reply) => {
 
 
 server.listen({
-    port: 6969
+    port: process.env.PORT || 3000,
+    host: '0.0.0.0'
 })
 
 
